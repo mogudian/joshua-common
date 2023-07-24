@@ -14,7 +14,7 @@ import java.util.function.Predicate;
  * @param <V> 节点值类型
  * @param <I> 节点唯一标识类型
  * @param <N> 当前对象类型
- * @author sunbo
+ * @author Joshua Sun
  * @since 2023/7/24
  */
 public abstract class AbstractTree<V, I, N extends AbstractTreeNode<V, I, N>> {

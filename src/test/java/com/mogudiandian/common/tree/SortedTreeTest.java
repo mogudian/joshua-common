@@ -9,7 +9,7 @@ import java.util.stream.Collectors;
 /**
  * 测试树
  *
- * @author sunbo
+ * @author Joshua Sun
  * @since 2023/7/24
  */
 public class SortedTreeTest {
