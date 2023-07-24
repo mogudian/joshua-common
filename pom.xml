@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.mogudiandian</groupId>
+    <artifactId>joshua-common</artifactId>
+    <version>1.0.0</version>
+
+    <name>joshua-common</name>
+    <description>Joshua's commonly-used classes</description>
+
+    <url>https://github.com/mogudian/joshua-common</url>
+
+    <scm>
+        <url>https://github.com/mogudian/joshua-common</url>
+        <connection>scm:git:https://git@github.com/mogudian/joshua-common.git</connection>
+    </scm>
+
+    <developers>
+        <developer>
+            <id>joshua</id>
+            <name>joshua</name>
+            <email>mogudian@outlook.com</email>
+        </developer>
+    </developers>
+
+    <licenses>
+        <license>
+            <name>Apache 2</name>
+            <url>https://www.apache.org/licenses/LICENSE-2.0.txt</url>
+            <distribution>repo</distribution>
+            <comments>A business-friendly OSS license</comments>
+        </license>
+    </licenses>
+
+    <properties>
+        <java.version>1.8</java.version>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.18.16</version>
+            <optional>true</optional>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.projectlombok</groupId>
+                <artifactId>lombok-maven-plugin</artifactId>
+                <version>1.18.12.0</version>
+                <executions>
+                    <execution>
+                        <phase>generate-sources</phase>
+                        <goals>
+                            <goal>delombok</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-source-plugin</artifactId>
+                <version>2.2.1</version>
+                <executions>
+                    <execution>
+                        <id>attach-sources</id>
+                        <goals>
+                            <goal>jar</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-javadoc-plugin</artifactId>
+                <version>2.9.1</version>
+                <configuration>
+                    <aggregate>true</aggregate>
+                    <charset>UTF-8</charset>
+                    <encoding>UTF-8</encoding>
+                    <docencoding>UTF-8</docencoding>
+                    <additionalparam>-Xdoclint:none</additionalparam>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>attach-javadocs</id>
+                        <goals>
+                            <goal>jar</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-gpg-plugin</artifactId>
+                <version>1.6</version>
+                <executions>
+                    <execution>
+                        <phase>verify</phase>
+                        <goals>
+                            <goal>sign</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-release-plugin</artifactId>
+                <version>2.5.1</version>
+            </plugin>
+
+            <plugin>
+                <groupId>org.sonatype.plugins</groupId>
+                <artifactId>nexus-staging-maven-plugin</artifactId>
+                <version>1.6.7</version>
+                <extensions>true</extensions>
+                <configuration>
+                    <serverId>sonatype-nexus</serverId>
+                    <nexusUrl>https://s01.oss.sonatype.org/</nexusUrl>
+                    <stagingProgressTimeoutMinutes>60</stagingProgressTimeoutMinutes>
+                    <autoReleaseAfterClose>true</autoReleaseAfterClose>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+    <!-- https://central.sonatype.org/publish/publish-guide/#accessing-repositories -->
+    <distributionManagement>
+        <snapshotRepository>
+            <id>sonatype-nexus</id>
+            <name>Sonatype Nexus Snapshots</name>
+            <url>https://s01.oss.sonatype.org/content/repositories/snapshots/</url>
+        </snapshotRepository>
+        <repository>
+            <id>sonatype-nexus</id>
+            <name>Nexus Release Repository</name>
+            <url>https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+        </repository>
+    </distributionManagement>
+
+</project>
